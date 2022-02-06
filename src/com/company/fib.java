@@ -6,7 +6,7 @@ class fibonacci {
     int n;
     int fib(int n){
         if (n==0){
-            return 1;
+            return 0;
         }
         else if (n==1){
             return 1;
@@ -19,12 +19,12 @@ class fibonacci {
 }
 
 public class fib {
-    public static void main(String args[]){
+    public static void main(String[] args){
        fibonacci f=new fibonacci();
        Scanner S=new Scanner(System.in);
-       System.out.print("Enter limit:");
+       System.out.print("Enter Number of terms:");
        f.n=S.nextInt();
-       for (int i=0;i<=f.n;i++){
+       for (int i=0;i<f.n;i++){
            System.out.println(f.fib(i)+" ");
        }
     }
