@@ -21,7 +21,7 @@ class bank{
     {
         int accnum;
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Enter account number:");
+        System.out.println("Enter account index(0-4):");
         accnum= scanner.nextInt();
         return accnum;
     }
