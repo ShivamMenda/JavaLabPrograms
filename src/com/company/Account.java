@@ -73,7 +73,7 @@ public class Account {
         int ch, bal, num,n;
         String name, type;
         Scanner scanner = new Scanner(System.in);
-        bank accounts[] = new bank[5];
+        bank[] accounts = new bank[5];
         System.out.print("Enter number of accounts (max 5):");
         n=scanner.nextInt();
         for (int i = 0; i < n; i++) {
