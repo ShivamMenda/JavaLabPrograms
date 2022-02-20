@@ -3,13 +3,13 @@ import java.util.*;
 
 import static java.lang.System.exit;
 
-class bank{
+class info{
     String name;
     int num;
     String type;
     int bal;
     static int count=0;
-    bank(int num,int bal,String name,String type)
+    info(int num,int bal,String name,String type)
     {
         this.num=num;
         this.bal=bal;
@@ -73,7 +73,7 @@ public class Account {
         int ch, bal, num,n;
         String name, type;
         Scanner scanner = new Scanner(System.in);
-        bank[] accounts = new bank[5];
+        info[] accounts = new info[5];
         System.out.print("Enter number of accounts (max 5):");
         n=scanner.nextInt();
         for (int i = 0; i < n; i++) {
@@ -86,7 +86,7 @@ public class Account {
             type = scanner.next();
             System.out.print("Enter balance:");
             bal = scanner.nextInt();
-            accounts[i] = new bank(num, bal, name, type);
+            accounts[i] = new info(num, bal, name, type);
         }
 
 
@@ -102,19 +102,19 @@ public class Account {
 
             switch (ch) {
                 case 1:
-                    accounts[bank.acc()].dep();
+                    accounts[info.acc()].dep();
                     break;
                 case 2:
-                    accounts[bank.acc()].rem();
+                    accounts[info.acc()].rem();
                     break;
                 case 3:
-                    accounts[bank.acc()].display();
+                    accounts[info.acc()].display();
                     break;
                 case 4:
                    exit(1);
                    break ;
                 case 5:
-                    bank.getCount();
+                    info.getCount();
                     break;
 
             }

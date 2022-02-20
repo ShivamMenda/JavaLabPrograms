@@ -3,7 +3,7 @@ package com.company;
 
 import java.util.Scanner;
 
-class info
+class bookinfo
 {
     String name;
     int code;
@@ -19,11 +19,11 @@ public class Book {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
         int n;
-        info[] b=new info[10];
+        bookinfo[] b=new bookinfo[10];
         System.out.print("Enter the number of books(max 10):");
         n=scanner.nextInt();
         for (int i = 0; i < n; i++) {
-            b[i]=new info();
+            b[i]=new bookinfo();
             System.out.println("For Book "+(i+1));
             System.out.print("Enter name:");
             b[i].name=scanner.next();
