@@ -12,6 +12,7 @@ class emp
     double income_tax;
     double net_pay;
     double gross_pay;
+    double add;
 
     emp()
     {
@@ -43,12 +44,30 @@ class emp
         hra=((0.18)*basic_pay);
         da= ((0.45)*basic_pay);
         gross_pay=basic_pay+hra+da;
-        income_tax=(0.075)*gross_pay;
-        net_pay=gross_pay-income_tax;
+        if (gross_pay<=200000){
+            income_tax=0;
+            net_pay=gross_pay-income_tax;
+        }
+        else if (gross_pay>=200000 && gross_pay<=300000)
+        {
+            income_tax=0.10*gross_pay;
+            net_pay=gross_pay-income_tax;
+        }
+        else if (gross_pay>=300000 && gross_pay<=500000)
+        {
+            income_tax=0.15*gross_pay;
+            net_pay=gross_pay-income_tax;
+        }
+        else
+        {
+            income_tax=0.30*gross_pay;
+            add=0.20*income_tax;
+            net_pay=gross_pay-income_tax-add;
+        }
+
         return net_pay;
     }
     void disp(){
-        System.out.println("------DETAILS------");
         System.out.println("Name:"+name);
         System.out.println("ID:"+empid);
         System.out.println("Gender:"+gender);
@@ -61,8 +80,20 @@ class emp
 
 public class Employee {
     public static void main(String[] args){
-        emp ob1=new emp();
-        ob1.input_details();
-        ob1.disp();
+        Scanner scanner=new Scanner(System.in);
+        int n;
+        System.out.println("Enter the number of employees:");
+        n= scanner.nextInt();
+        emp[] emp =new emp[n];
+        for (int i = 0; i < n; i++) {
+            emp[i]=new emp();
+            System.out.println("For Employee "+(i+1));
+            emp[i].input_details();
+            emp[i].Net_pay();
+        }
+        for (int i = 0; i < n; i++) {
+            System.out.println("------DETAILS OF EMPLOYEE "+(i+1)+" ------");
+            emp[i].disp();
+        }
     }
 }
