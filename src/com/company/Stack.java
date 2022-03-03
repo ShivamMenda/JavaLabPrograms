@@ -1,72 +1,65 @@
 package com.company;
 
 import java.util.*;
-
 import static java.lang.System.exit;
 
-class stck{
+class StackException extends Exception {
+    public StackException(String str) {
+        // the error message is passed up to the Exception class
+        super(str);
+    }
+}
 
-    int[] stack =new int[10];
+class stck {
+
+    int[] stack = new int[10];
     int top;
 
-    stck()
-    {
-        top=-1;
+    stck() {
+        top = -1;
     }
 
-    void push(int item)
-    {
-        if (top==9){
-            System.out.println("Overflow");
-        }
-        else
-        {
-            stack[++top]=item;
+    void push(int item) throws StackException {
+        if (top == 9) {
+            throw new StackException("Stack overflow");
+        } else {
+            stack[++top] = item;
         }
     }
 
-    void pop()
-    {
-        if (top==-1){
-            System.out.println("Underflow");
+    void pop() throws StackException {
+        if (top == -1) {
+            throw new StackException("Stack underflow");
 
-        }
-        else
-        {
-            System.out.println("The popped element is "+stack[top--]);
+        } else {
+            System.out.println("The popped element is " + stack[top--]);
         }
     }
 
-    void peek()
-    {
-        if (top==-1)
-        {
+    void peek() {
+        if (top == -1) {
             System.out.println("Stack empty");
 
-        }
-        else
-        {
-            System.out.println("Top: "+stack[top]);
+        } else {
+            System.out.println("Top: " + stack[top]);
         }
     }
 
-    void display()
-    {
-        if (top==-1)
-        {
+    void display() {
+        if (top == -1) {
             System.out.println("Stack empty");
-        }
-        else {
+        } else {
             for (int i = top; i >= 0; i--) {
                 System.out.println(stack[i]);
             }
         }
     }
 }
+
 public class Stack {
     public static void main(String[] args) {
        stck ob=new stck();
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
        int ch;
         while (true)
         {
@@ -83,9 +76,20 @@ public class Stack {
                     int item;
                     System.out.print("Enter item:");
                     item = scanner.nextInt();
-                    ob.push(item);
+                    try{
+                        ob.push(item);
+                    }
+                    catch(StackException ex){
+                        System.out.println("Exception caught \n" + ex);
+                    }
                 }
-                case 2 -> ob.pop();
+                case 2 -> {
+                    try{
+                    ob.pop();
+                    }
+                    catch(StackException ex){
+                        System.out.println("Exception caught \n" + ex);
+                }}
                 case 3 -> ob.peek();
                 case 4 -> ob.display();
                 default -> exit(1);
